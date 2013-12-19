@@ -33,4 +33,11 @@ SampleApp::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  #speed up  test ny lowering BCrypt's cost function.
+  require 'BCrypt'
+  silence_warnings do
+    BCrypt::Engine::DEFAULT_COST=BCrypt::Engine::MIN_COST
+  end
+
 end
